@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "dependencies": {
+    "@datocms/cma-client-node": "^1.1.5",
+    "datocms-client": "^3.5.21"
+  }
+}
