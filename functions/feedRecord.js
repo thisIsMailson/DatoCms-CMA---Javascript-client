@@ -1,7 +1,6 @@
 import { buildBlockRecord } from "@datocms/cma-client-node";
 
 const feedRecord = async (client, recordId, data) => {
-  // console.log("feeder =>", data);
   try {
     client.items.update(recordId, {
       item_type: { type: "item_type", id: "1629358" },

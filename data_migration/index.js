@@ -8,7 +8,7 @@ const client = buildClient({
   apiToken: "8617d634a33c44ef657b709d3edb5c",
   baseUrl: "https://site-api.datocms.com",
   extraHeaders: ["Content-Type: application/vnd.api+json"],
-  environment: "dev",
+  // environment: "dev",
   logLevel: LogLevel.BASIC,
 });
 const divisions = [
@@ -89,13 +89,13 @@ const divisionMapper = (data) => {
       const obj = { ...d, Division: "102864406" };
       newData.push(obj);
     } else if (d.Division === "SMP Automotive Interiors (Beijing) Co., Ltd.") {
-      const obj = { ...d, Division: "31364164" };
+      const obj = { ...d, Division: "142459139" }; //31364164 for the dev env
       newData.push(obj);
     } else if (d.Division === "Technolgy & Industrial Solutions") {
       const obj = { ...d, Division: "102864450" };
       newData.push(obj);
     } else if (d.Division === "Headquarter") {
-      const obj = { ...d, Division: "31364161" };
+      const obj = { ...d, Division: "142459126" }; //31364161 for the dev env
       newData.push(obj);
     }
   });

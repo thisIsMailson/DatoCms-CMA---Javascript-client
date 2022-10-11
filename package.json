@@ -1,4 +1,5 @@
 {
+  "author": "Mailson Varela <mailson@generous.studio>",
   "type": "module",
   "dependencies": {
     "@datocms/cma-client-node": "^1.1.5",

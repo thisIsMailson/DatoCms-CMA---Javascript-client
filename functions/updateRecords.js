@@ -2,9 +2,7 @@ import { buildBlockRecord } from "@datocms/cma-client-node";
 const updateRecords = async (
   client,
   records,
-  graphicData,
-  representativeData,
-  carouselData
+  representativeData
 ) => {
   try {
     records.map(
