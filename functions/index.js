@@ -25,9 +25,3 @@ async function run() {
 }
 
 run();
-
-//! run this for a more detailed log error
-//?  node index.js --es-module-specifier-resolution=node
-
-// check this doc for api refs
-// https://www.datocms.com/docs/content-management-api/resources/item/self

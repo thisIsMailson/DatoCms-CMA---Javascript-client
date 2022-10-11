@@ -5,4 +5,4 @@ This project is an isolated javascript node client used solely to *replicate* co
 
 > Usage
 >
->> run: node index.js **--es-module-specifier-resolution=node** on the function's **root**
+>> run: node index.js **--es-module-specifier-resolution=node** on the function's or data_migration's **root**
