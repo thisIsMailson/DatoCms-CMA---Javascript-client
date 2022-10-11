@@ -6,7 +6,7 @@ import getRecordByName from "./getRecordByName.js";
 
 async function run() {
   const client = buildClient({
-    apiToken: "8617d634a33c44ef657b709d3edb5c",
+    apiToken: "YOUR_API_KEY",
     baseUrl: "https://site-api.datocms.com",
     extraHeaders: ["Content-Type: application/vnd.api+json"],
     environment: "dev",
