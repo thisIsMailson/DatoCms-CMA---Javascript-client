@@ -3,9 +3,10 @@ import { parse } from "csv-parse";
 import { buildClient, LogLevel } from "@datocms/cma-client-node";
 import getRecordByName from "../functions/getRecordByName.js";
 import feedRecord from "../functions/feedRecord.js";
+import clearAllDataFromRecord from "../functions/clearAllDataFromRecord.js";
 
 const client = buildClient({
-  apiToken: "8617d634a33c44ef657b709d3edb5c",
+  apiToken: "YOUR_API_KEY",
   baseUrl: "https://site-api.datocms.com",
   extraHeaders: ["Content-Type: application/vnd.api+json"],
   // environment: "dev",
@@ -70,7 +71,8 @@ async function run() {
       // Making some data normalization
       const mappedDivision = divisionMapper(data);
       const mappedCountries = countryMapper(mappedDivision);
-      integrator(mappedCountries);
+      const shuffledLocations = shuffle(mappedCountries);
+      integrator(shuffledLocations);
       console.log("finished");
     });
 }
@@ -292,13 +294,38 @@ const countryMapper = (data) => {
   });
   return newData;
 };
-const integrator = async (data) => {
-  const missing = [];
+function shuffle(array) {
+  let currentIndex = array.length,
+    randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex != 0) {
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return array;
+}
+const clearRecordData = async (data) => {
   for (let i = 0; i < data.length; i++) {
-    const item = await getRecordByName(client, data[i].Location);
-    if (item[0] && item[0].id !== "111912760") {
-      await feedRecord(client, item[0].id, data[i]);
+    clearAllDataFromRecord(data[i].i);
+  }
+};
+const integrator = async (data) => {
+  for (let i = 0; i < data.length; i++) {
+    const record = await getRecordByName(client, data[i].Location);
+    // if (record[0]) await clearAllDataFromRecord(client, record[0].id);
+    if (record[0] && record[0].id !== "111912760") {
+      await feedRecord(client, record[0], data[i]);
     }
+
     if (!data[i].Division) missing.push([data[i].Location, data[i].Division]);
   }
 };

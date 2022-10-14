@@ -12,13 +12,13 @@ const updateRecords = async (
           // we just pass the field that we want to change
           // new block record
           representative: String(representativeData), //! this one is working fine
-          graphic: [
-            buildBlockRecord({
-              item_type: { type: "item_type", id: "1690861" },
-              visual_type: "Image",
-              image: { upload_id: "48480442" },
-            }),
-          ],
+          // graphic: [
+          //   buildBlockRecord({
+          //     item_type: { type: "item_type", id: "1690861" },
+          //     visual_type: "Image",
+          //     image: { upload_id: "48480442" },
+          //   }),
+          // ],
           carousel: [
             buildBlockRecord({
               item_type: { type: "item_type", id: "1989365" }, //? id of the carousel's block
